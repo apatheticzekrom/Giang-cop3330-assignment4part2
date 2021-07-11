@@ -1,0 +1,37 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class ToDoList {
+ToDoList: List<items> | Length: 100
+----
+itemAdd()
+itemDelete()
+clearList()
+}
+
+class Item {
+Description: String | Length: 1-256
+Due Date: YYYY-MM-DD (Must be valid in gregorian calender)
+----
+itemUpdateDesc()
+itemUpdateDate()
+itemMarkComplete()
+itemMarkIncomplete()
+}
+
+class listDisplay {
+displayAll()
+displayIncomplete()
+displayCompleted()
+}
+
+class listActions {
+saveList()
+loadList()
+}
+
+ToDoList <- listDisplay
+listActions -> ToDoList
+ToDoList <-- Item
+
+@enduml
