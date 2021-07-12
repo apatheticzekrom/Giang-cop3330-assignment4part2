@@ -43,4 +43,18 @@ public class Item
         isCompleted = completed;
     }
 
+    public boolean itemEquals(Item other)
+    {
+        if(this.isCompleted != other.isCompleted){
+            return false;
+        }
+        if(this.dueDate != other.dueDate){
+            return false;
+        }
+        if(this.description != other.description){
+            return false;
+        }
+        return true;
+    }
+
 }

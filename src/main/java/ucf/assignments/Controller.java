@@ -27,7 +27,7 @@ import java.util.Scanner;
 
 public class Controller implements Initializable {
 
-    // FXML Stuff
+    // FXML Stuff (Names are self explanatory but I will add pseudocode anyways cuz im scared of points off)
     ObservableList<Item> ToDoList = FXCollections.observableArrayList();
 
     @FXML TextField descriptionTextField;
@@ -39,6 +39,10 @@ public class Controller implements Initializable {
 
     @FXML
     public void AddItemClicked(ActionEvent actionEvent) {
+        // Gets string from description text box
+        // Gets string from date picker box
+        // Checks to make sure the description is 256 or less
+        // runs addItem()
         String desc = descriptionTextField.getText();
         String date = dateTextField.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         Boolean comp = false;
@@ -46,22 +50,27 @@ public class Controller implements Initializable {
         {
             itemAdd(desc, date, comp);
         }
-
+        displayAll();
     }
 
     @FXML
     public void DeleteItemClicked(ActionEvent actionEvent) {
+        // Runs itemDelete()
         itemDelete();
+
     }
 
     @FXML
     public void ClearListClicked(ActionEvent actionEvent) {
-
+        // Runs clearList()
         clearList();
     }
 
     @FXML
     public void updateDescClicked(ActionEvent actionEvent) {
+        // Gets string from description text box
+        // Checks to make sure the description is 256 or less
+        // runs itemUpdateDesc()
         String desc = descriptionTextField.getText();
         if(desc.length() < 257)
         {
@@ -71,45 +80,51 @@ public class Controller implements Initializable {
 
     @FXML
     public void UpdateDateClicked(ActionEvent actionEvent) {
+        // Gets string from date picker box
+        // Runs itemUpdateDate()
         String date = dateTextField.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         itemUpdateDate(date);
     }
 
     @FXML
     public void MarkCompleteClicked(ActionEvent actionEvent) {
-
+        // Runs itemMarkComplete()
         itemMarkComplete();
     }
 
     @FXML
     public void MarkIncompleteClicked(ActionEvent actionEvent) {
-
+        // Runs itemMarkIncomplete()
         itemMarkIncomplete();
     }
 
 
     @FXML
     public void DisplayAllClicked(ActionEvent actionEvent) {
-
+        // Runs displayAll()
         displayAll();
     }
 
     @FXML
     public void DisplayCompleteClicked(ActionEvent actionEvent) {
+        // Runs displayCompleted()
         displayCompleted();
     }
 
     @FXML
     public void DisplayIncompleteClicked(ActionEvent actionEvent) {
+        // Runs displayIncomplete()
         displayIncomplete();
     }
 
     @FXML public void SaveListClicked(ActionEvent actionEvent) {
+        // Runs saveList()
         saveList();
     }
 
     @FXML
     public void LoadListClicked(ActionEvent actionEvent) throws FileNotFoundException {
+        // Runs loadList()
         loadList();
     }
 
@@ -119,7 +134,6 @@ public class Controller implements Initializable {
         // Takes the inputs desc, date, and comp
         // adds the item to the list
         ToDoList.add(new Item(desc, date, comp));
-        displayAll();
         return ToDoList;
     }
 
