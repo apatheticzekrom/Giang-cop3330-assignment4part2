@@ -23,7 +23,7 @@ public class clearListTest {
 
         for(int i = 0; i < ToDoList.size();i++)
         {
-            assertTrue(ToDoList.get(i).itemEquals(actual.get(i)));
+            assertTrue(ToDoList.get(i).equals(actual.get(i)));
         }
     }
 }

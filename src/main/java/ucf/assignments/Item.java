@@ -43,18 +43,37 @@ public class Item
         isCompleted = completed;
     }
 
-    public boolean itemEquals(Item other)
+    private boolean itemEquals(Item other)
     {
         if(this.isCompleted != other.isCompleted){
             return false;
         }
-        if(this.dueDate != other.dueDate){
+        if(!this.dueDate.equals(other.dueDate)){
             return false;
         }
-        if(this.description != other.description){
+        if(!this.description.equals(other.description)){
             return false;
         }
         return true;
     }
 
+    @Override
+    public boolean equals(Object other)
+    {
+        if(!(other instanceof Item))
+        {
+            return false;
+        }
+
+        Item that = (Item)other;
+        return itemEquals(that);
+
+    }
+
+    @Override
+    public String toString()
+    {
+        String convertedString = this.getDescription() + this.getDueDate() + this.getCompleted();
+        return convertedString;
+    }
 }
