@@ -5,6 +5,8 @@ import ucf.assignments.Controller;
 
 import java.io.*;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 public class saveListTest {
     @Test
@@ -22,11 +24,11 @@ public class saveListTest {
         File file2 = new File("src/test/java/ControllerTests/testfile/newtestoutput.txt");
         controller.saveText(file2 , "abc\n" + "2020-10-20\n" + "false\n");
 
-        assertEquals();
+        assertTrue(check());
 
     }
 
-    private boolean assertEquals() throws IOException {
+    private boolean check() throws IOException {
 
         BufferedReader file1 = new BufferedReader(new FileReader("src/test/java/ControllerTests/testfile/testoutput.txt"));
         BufferedReader file2 = new BufferedReader(new FileReader("src/test/java/ControllerTests/testfile/newtestoutput.txt"));
