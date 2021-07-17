@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class loadListTest {
     @Test
-    public boolean loadListTest() throws FileNotFoundException {
+    public void loadListTest() throws FileNotFoundException {
 
         ObservableList<Item> ToDoList = FXCollections.observableArrayList();
         Item test = new Item("abc", "2000-10-20", false);
@@ -23,7 +23,7 @@ public class loadListTest {
         ObservableList<Item> actual = controller.loadList(file);
 
 
-        return contentEquals(ToDoList, actual);
+        contentEquals(ToDoList, actual);
 
     }
 
@@ -50,7 +50,6 @@ public class loadListTest {
                 is = false;
             }
         }
-
 
         System.out.print(is);
         return is;
