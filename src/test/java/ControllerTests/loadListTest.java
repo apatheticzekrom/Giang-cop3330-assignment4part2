@@ -22,8 +22,8 @@ public class loadListTest {
         File file = new File("src/test/java/ControllerTests/testfile/testoutput.txt");
         ObservableList<Item> actual = controller.loadList(file);
 
-        System.out.printf("%s\n", ToDoList);
-        System.out.printf("%s", actual);
+//        System.out.printf("%s\n", ToDoList);
+//        System.out.printf("%s", actual);
 
         for(int i = 0; i < ToDoList.size();i++)
         {
