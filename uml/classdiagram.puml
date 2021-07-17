@@ -9,6 +9,7 @@ class Item {
 Description: String | Length: 1-256
 Due Date: YYYY-MM-DD (Must be valid in gregorian calender)
 ----
+itemEquals() (test function)
 }
 
 controller -> ToDoList
@@ -45,5 +46,7 @@ saveText()
 loadList()
 }
 
+class controllerActions {
+}
 
 @enduml
