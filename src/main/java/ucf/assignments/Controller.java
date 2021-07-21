@@ -282,8 +282,8 @@ public class Controller implements Initializable {
                 String desc = scanner.nextLine();
                 String date = scanner.nextLine();
                 String temp = scanner.nextLine();
-                Boolean comp = false;
-                if (temp == "true") {
+                boolean comp = false;
+                if (temp.equals("true")) {
                     comp = true;
                 } else {
                     comp = false;

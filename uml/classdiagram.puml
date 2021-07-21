@@ -42,7 +42,6 @@ displayAll()
 displayIncomplete()
 displayCompleted()
 saveList()
-saveText()
 loadList()
 }
 

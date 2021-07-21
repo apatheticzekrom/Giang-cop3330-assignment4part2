@@ -6,7 +6,7 @@ import ucf.assignments.Controller;
 import java.io.*;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
+// It's named saveList, but saveTest is the actual thing being tested
 
 public class saveListTest {
     @Test
