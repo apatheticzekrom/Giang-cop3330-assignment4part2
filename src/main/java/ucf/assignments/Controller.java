@@ -51,7 +51,7 @@ public class Controller implements Initializable {
         {
             itemAdd(desc, date, comp);
         }
-        displayAll();
+        displayAll(ToDoList, displayTable);
     }
 
     @FXML
@@ -59,7 +59,7 @@ public class Controller implements Initializable {
         // Runs itemDelete()
         // runs displayAll()
         itemDelete(displayTable.getSelectionModel().getSelectedItem());
-        displayAll();
+        displayAll(ToDoList, displayTable);
     }
 
     @FXML
@@ -67,7 +67,7 @@ public class Controller implements Initializable {
         // Runs clearList()
         // runs displayAll()
         clearList();
-        displayAll();
+        displayAll(ToDoList, displayTable);
     }
 
     @FXML
@@ -81,7 +81,7 @@ public class Controller implements Initializable {
         {
             itemUpdateDesc(displayTable.getSelectionModel().getSelectedIndex(), desc);
         }
-        displayAll();
+        displayAll(ToDoList, displayTable);
     }
 
     @FXML
@@ -91,7 +91,7 @@ public class Controller implements Initializable {
         // runs displayAll()
         String date = dateTextField.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         itemUpdateDate(displayTable.getSelectionModel().getSelectedIndex(), date);
-        displayAll();
+        displayAll(ToDoList, displayTable);
     }
 
     @FXML
@@ -99,7 +99,7 @@ public class Controller implements Initializable {
         // Runs itemMarkComplete()
         // runs displayAll()
         itemMarkComplete(displayTable.getSelectionModel().getSelectedIndex());
-        displayAll();
+        displayAll(ToDoList, displayTable);
     }
 
     @FXML
@@ -107,26 +107,26 @@ public class Controller implements Initializable {
         // Runs itemMarkIncomplete()
         // runs displayAll()
         itemMarkIncomplete(displayTable.getSelectionModel().getSelectedIndex());
-        displayAll();
+        displayAll(ToDoList, displayTable);
     }
 
 
     @FXML
     public void DisplayAllClicked(ActionEvent actionEvent) {
         // Runs displayAll()
-        displayAll();
+        displayAll(ToDoList, displayTable);
     }
 
     @FXML
     public void DisplayCompleteClicked(ActionEvent actionEvent) {
         // Runs displayCompleted()
-        displayCompleted();
+        displayCompleted(ToDoList, displayTable);
     }
 
     @FXML
     public void DisplayIncompleteClicked(ActionEvent actionEvent) {
         // Runs displayIncomplete()
-        displayIncomplete();
+        displayIncomplete(ToDoList, displayTable);
     }
 
     @FXML public void SaveListClicked(ActionEvent actionEvent) {
@@ -140,7 +140,7 @@ public class Controller implements Initializable {
         // runs displayAll()
         File file = fileChooser.showOpenDialog(new Stage());
         loadList(file);
-        displayAll();
+        displayAll(ToDoList, displayTable);
     }
 
     // Actual functions ---------------------------------------------------------------------
@@ -182,21 +182,21 @@ public class Controller implements Initializable {
         return ToDoList;
     }
 
-    public  ObservableList<Item> itemMarkComplete(int selectedIndex)
+    public ObservableList<Item> itemMarkComplete(int selectedIndex)
     {
         // Sets the selected item as completed
         ToDoList.get(selectedIndex).setCompleted(true);
         return ToDoList;
     }
 
-    public  ObservableList<Item> itemMarkIncomplete(int selectedIndex)
+    public ObservableList<Item> itemMarkIncomplete(int selectedIndex)
     {
         // Sets the selected item as incomplete
         ToDoList.get(selectedIndex).setCompleted(false);
         return ToDoList;
     }
 
-    public  void displayAll()
+    public void displayAll(ObservableList<Item> ToDoList, TableView<Item> displayTable)
     {
         // Clears display table
         // Adds everything currently in the list to the display table
@@ -207,7 +207,7 @@ public class Controller implements Initializable {
         }
     }
 
-    public  void displayIncomplete()
+    public  void displayIncomplete(ObservableList<Item> ToDoList, TableView<Item> displayTable)
     {
         // Clears display table
         // Checks if the item is incomplete
@@ -222,7 +222,7 @@ public class Controller implements Initializable {
         }
     }
 
-    public  void displayCompleted()
+    public  void displayCompleted(ObservableList<Item> ToDoList, TableView<Item> displayTable)
     {
         // Clears display table
         // Checks if the item is complete
@@ -258,17 +258,6 @@ public class Controller implements Initializable {
         }
     }
 
-    public  void saveText(File file, String content){
-        // Saves the inputted string into a text file
-        try {
-                PrintWriter printWriter = new PrintWriter(file);
-                printWriter.write(content);
-                printWriter.close();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-        }
-    }
-
     public  ObservableList<Item> loadList(File file) throws FileNotFoundException {
         // Prompts user to select a file to be loaded
         // Inputs the file contents into an item
@@ -295,6 +284,25 @@ public class Controller implements Initializable {
         }
         return ToDoList;
     }
+
+    // Test functions
+    public  void saveText(File file, String content){
+        // Saves the inputted string into a text file
+        try {
+            PrintWriter printWriter = new PrintWriter(file);
+            printWriter.write(content);
+            printWriter.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public TableView<Item> getDisplayTable()
+    {
+        return displayTable;
+    }
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

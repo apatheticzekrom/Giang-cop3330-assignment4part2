@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class itemDeleteTest {
     @Test
-    public void itemDeleteTest()
+    public void deleteItemTest()
     {
         ObservableList<Item> ToDoList = FXCollections.observableArrayList();
         Controller controller = new Controller();
@@ -27,7 +27,5 @@ public class itemDeleteTest {
         {
             assertTrue(ToDoList.get(i).equals(actual.get(i)));
         }
-
-
     }
 }

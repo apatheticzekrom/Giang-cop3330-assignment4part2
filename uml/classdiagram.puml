@@ -45,7 +45,4 @@ saveList()
 loadList()
 }
 
-class controllerActions {
-}
-
 @enduml
